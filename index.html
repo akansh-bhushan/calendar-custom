@@ -1,0 +1,46 @@
+<html>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/angularjs-datepicker/dist/angular-datepicker.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./node_modules/angular/angular.min.js"></script>
+    <script src="./node_modules/angularjs-datepicker/dist/angular-datepicker.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="js/app-ctrl.js"></script>
+    <script src="js/dateCtrl.js"></script>
+    <script src="js/services.js"></script>
+
+
+    <body ng-app="MyApp">   
+        <div ng-controller="MyCtrl">
+            <div class="container-fluid mt-5">
+                <div class="row justify-content-center">
+                    <div class="cpl-sm-4 ">
+                        <datepicker class="date" date-format="MM-dd-yyyy">
+                            <input class="choose-box" placeholder="Choose a Date" ng-model="date" ng-change="changeDate(date)">
+                            <span class="input-group-addon" style="cursor: pointer">
+                            </span>
+                        </datepicker>
+                    </div>
+                </div>    
+            </div>
+              
+            <div class="container mt-5 pl-5 data-div">
+                <div class="row justify-content-center">
+                    <!-- <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8"> -->
+                        <a ng-hide="l_index == 0" class="date-view"><i class="fa fa-arrow-circle-left icon1" ng-click="leftSelect()"></i></a>
+                        <div ng-class="{'highlight': data.active == 1}" ng-repeat="data in newArray track by $index" class="text-center" id="box" ng-click=open($index)>
+                            <p class="align-date">{{data.month}}</p>
+                            <b class="date">{{data.date}}</b><br/>
+                            <span class="day text-center">{{data.day}}</span>
+                        </div>
+                        <a ng-hide="(r_index*number)  > arrayDays.length||newArray.length == 0" class="date-view" ><i class="fa fa-arrow-circle-right icon" ng-click="rightSelect()"></i></a>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div> 
+    </body>
+</html>
